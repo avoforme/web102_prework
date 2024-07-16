@@ -44,7 +44,9 @@ function addGamesToPage(games) {
     gameImg.classList.add("game-img");
     gameImg.setAttribute("src", game.img);
 
-    gameInfo.textContent = `Name: ${game.name} // Description: ${game.description}.`;
+    gameInfo.innerHTML = `<h3> Name: ${game.name} </h3> 
+    
+    <p>Description: ${game.description}</p>`;
     gameInfo.appendChild(gameImg);
 
     // append the game to the games-container
