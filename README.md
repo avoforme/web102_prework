@@ -19,6 +19,9 @@ The following **optional** features are implemented:
 
 * [x]  A navigation button that gets users to the games section quickly
 * [x]  The overall design of the page is brighter with the color green
+* [x]  A progress bar that shows how many games are funded
+
+
 
 
 
