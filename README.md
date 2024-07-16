@@ -31,7 +31,7 @@ Here's a walkthrough of implemented features:
 
 <img src='/walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with CapLice
+GIF created with LICEcap
 
 ## Notes
 
