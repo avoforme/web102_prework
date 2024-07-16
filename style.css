@@ -11,7 +11,7 @@ body {
 
 .header {
     display: flex;
-    background-color: lightblue;
+    background-color: #D6EFD8;
     padding: 1%;
     align-items: center;
     margin-left: -10px;
@@ -40,6 +40,15 @@ body {
     cursor: pointer;
     box-shadow: 0 0 30px lightblue;
 }
+
+#progress-fill {
+    width: 10%;
+    height: 30px;
+    background-color: #04AA6D;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white;
+  }
 
 .stats-card {
     background-color: #80AF81;

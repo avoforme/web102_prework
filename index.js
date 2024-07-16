@@ -120,7 +120,6 @@ function filterFundedOnly() {
 
   // use the function we previously created to add unfunded games to the DOM
   addGamesToPage(listOfUnderFunded);
-
 }
 
 // show all games
@@ -128,7 +127,6 @@ function showAllGames() {
   deleteChildElements(gamesContainer);
   // add all games from the JSON data to the DOM
   addGamesToPage(GAMES_JSON);
-
 }
 
 // select each button in the "Our Games" section
@@ -139,7 +137,7 @@ const allBtn = document.getElementById("all-btn");
 // add event listeners with the correct functions to each button
 unfundedBtn.addEventListener("click", filterUnfundedOnly);
 fundedBtn.addEventListener("click", filterFundedOnly);
-allBtn.addEventListener("click", showAllGames)
+allBtn.addEventListener("click", showAllGames);
 
 /*************************************************************************************
  * Challenge 6: Add more information at the top of the page about the company.
@@ -150,17 +148,21 @@ allBtn.addEventListener("click", showAllGames)
 const descriptionContainer = document.getElementById("description-container");
 
 // use filter or reduce to count the number of unfunded games
-const numberOfUnfundedGames= GAMES_JSON.reduce((sum, each)=>{
-    return each.pledged<each.goal? sum+1 : sum;
-},0)
+const numberOfUnfundedGames = GAMES_JSON.reduce((sum, each) => {
+  return each.pledged < each.goal ? sum + 1 : sum;
+}, 0);
 // create a string that explains the number of unfunded games using the ternary operator
-const displayString = `A total of $${totalRaise.toLocaleString('en-US')} has been raised for ${totalGame} games. Currently ${numberOfUnfundedGames} ${(numberOfUnfundedGames>1? "games" : "game" )} remain unfunded.
-We need your help to fund these amazing games!`
+const displayString = `A total of $${totalRaise.toLocaleString(
+  "en-US"
+)} has been raised for ${totalGame} games. Currently ${numberOfUnfundedGames} ${
+  numberOfUnfundedGames > 1 ? "games" : "game"
+} remain unfunded.
+We need your help to fund these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
-const raiseNoti = document.createElement("p")
-raiseNoti.innerHTML= displayString;
-descriptionContainer.appendChild(raiseNoti)
+const raiseNoti = document.createElement("p");
+raiseNoti.innerHTML = displayString;
+descriptionContainer.appendChild(raiseNoti);
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort
@@ -177,11 +179,22 @@ const sortedGames = GAMES_JSON.sort((item1, item2) => {
 let [firstGame, secondGame, ...others] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-const firstGameName = document.createElement("p")
-const secondGameName= document.createElement("p")
-firstGameName.innerHTML = firstGame['name']
-firstGameContainer.appendChild(firstGameName)
+const firstGameName = document.createElement("p");
+const secondGameName = document.createElement("p");
+firstGameName.innerHTML = firstGame["name"];
+firstGameContainer.appendChild(firstGameName);
 
 // do the same for the runner up item
-secondGameName.innerHTML = secondGame['name']
-secondGameContainer.appendChild(secondGameName)
+secondGameName.innerHTML = secondGame["name"];
+secondGameContainer.appendChild(secondGameName);
+
+/************************************************************************************
+ * Personal changes
+ */
+
+// Calculate the percentage funded and update the progress bar
+
+const fundedPercentage = (numberOfUnfundedGames / totalGame) * 100;
+var elem = document.getElementById("progress-fill");
+elem.style.width = fundedPercentage + "%";
+elem.innerHTML = fundedPercentage.toFixed(2) + "%";
